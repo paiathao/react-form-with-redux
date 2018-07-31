@@ -7,19 +7,26 @@ class SnackForm extends Component {
         super(props);
 
         this.state = {
-            snack : '',
+            snackList : {
+               name: '',
+               snack: ''
+            }  
         }
     }
 
-    handleChange = (event) => {
+    handleChange = (propertyName) => (event) => {
         this.setState({
-            snack : event.target.value
+            snackList: {
+                ...this.state.snackList,
+                [propertyName]: event.target.value,
+            }
         })
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: 'ON_SUBMIT', payload : this.state.snack})
+        console.log(this.state.snackList)
+        this.props.dispatch({ type: 'ON_SUBMIT', payload : this.state.snackList})
     }
     
 
@@ -27,7 +34,8 @@ class SnackForm extends Component {
     return (
       <div>
           <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleChange}/>
+          <input type="text" onChange={this.handleChange('snack')} placeholder="snack name"/>
+          <input type="text" onChange={this.handleChange('name')} placeholder="person name"/>
           <input type="submit" />
           </form>
       </div>

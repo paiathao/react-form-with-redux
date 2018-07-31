@@ -11,7 +11,11 @@ const onSubmit = (state = [], action) => {
     
     if (action.type === 'ON_SUBMIT') {
         console.log(action.payload)
-        return [...state, action.payload]
+        return [...state, 
+             {
+                name: action.payload.name, 
+                snack: action.payload.snack 
+            }]
     }
     return state
 }
