@@ -7,7 +7,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger'
 
-const onSubmit = (state = {}, action) => {
+const onSubmit = (state = [], action) => {
     
     if (action.type === 'ON_SUBMIT') {
         console.log(action.payload)
